@@ -102,6 +102,14 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var result = [], dupTrack = {};
+    _.each(array, function(val){
+        if (!dupTrack.hasOwnProperty(val)) {
+            result.push(val);
+            dupTrack[val] = true;
+        }
+    });
+    return result;
   };
 
 
