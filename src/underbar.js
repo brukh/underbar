@@ -81,9 +81,9 @@
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
-    var result = [];
+    var result = [];  
     _.each(collection, function(val, i, list){
-        if (test(val, i, list)) {
+        if (test(val)) {
             result.push(val);
         }
     }); 
@@ -94,6 +94,10 @@
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    return _.filter(collection, function(val){
+        return !test(val);
+    });
+
   };
 
   // Produce a duplicate-free version of the array.
